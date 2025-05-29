@@ -1,0 +1,18 @@
+- [x] Ingest data into MongoDB (Atlas cluster, in this case) :tada:
+- [x] Create appropriate .env/requirements.txt files as appropriate if needed
+- [x] Integrate MongoDB with FastAPI endpoints
+- [x] Deploy FastAPI with Render
+- [ ] Look into Git LFS
+- [x] Train ML model(s)
+- [x] Generate interactive visualizations
+- [x] Make model page
+- [ ] Make dataset page with bar graphs of values in training and testing datasets
+- [x] Build UI and polish it
+- [ ] Check out database validation
+- [ ] Look into update method of CRUD
+- [ ] Squash git commits...
+- [ ] Figure out the live user testing (if there will be any, having an endpoint for it, providing sample inference data, etc.)
+- [ ] Make datasets for live testing if any
+- [ ] Make css responsive to window resizing
+- [ ] Make css responsive to mobile devices
+- [x] Store model and other storable stuff in Atlas MongoDB

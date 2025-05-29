@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>IoTPacketPatrol</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="icon" type="image/x-icon" href="/static/assets/images/tab-icon.png">
+</head>
+
+<body>
+    <div id = "card">
+        
+        <div id = "top-rectangle">
+            <a href="/" class="base-button">
+                <div class="half-logo">
+                    IOT
+                </div>
+                <div class="logo">PacketPatrol</div>
+            </a>
+            <a href = "/#dataset-anchor" class="header-mini">Project Architecture</a>
+            <a href = "/demo" class="header-mini">Live Demo</a>
+            <a href = "/about" class="header-mini">About</a>
+            <div class="devpost-button">
+                Devpost
+            </div>
+        </div>
+        <div id = "bottom-rectangle">
+            <div id="demo-anchor"></div>
+            <div id = "demo-content">
+                <div class = "model-title">
+                    Live Demo
+                    <div class="divider-line"></div>
+                </div>
+                <div class="dataset-container">
+                    <div class="demo-one-container">
+                        <div class="demo-one-title">
+                            Enter your data here:
+                            <div class="divider-line"></div>
+                        </div>
+                        <div class="dataset-inner-container">
+                            <div class="dataset">
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    pkSeqID
+                                    <span class="tooltiptext dataset-tooltip">Unique packet sequence ID</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    proto
+                                    <span class="tooltiptext">Protocol used</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    saddr
+                                    <span class="tooltiptext">Source IP address</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    sport
+                                    <span class="tooltiptext">Source port</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    daddr
+                                    <span class="tooltiptext">Destination IP address</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    dport
+                                    <span class="tooltiptext">Destination port</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    seq
+                                    <span class="tooltiptext">Sequence number of the packet</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    stddev
+                                    <span class="tooltiptext">Standard deviation of inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    n_in_srcip
+                                    <span class="tooltiptext">Number of inbound connections per source IP</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    min
+                                    <span class="tooltiptext">Minimum packet size or inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    state_n
+                                    <span class="tooltiptext">Encoded representation of connection state</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    mean
+                                    <span class="tooltiptext">Mean packet size or inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    n_in_dstip
+                                    <span class="tooltiptext">Number of inbound connections per destination IP</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    drate
+                                    <span class="tooltiptext">Data rate of the connection</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    srate
+                                    <span class="tooltiptext">Session rate or flow creation rate</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    max
+                                    <span class="tooltiptext">Maximum packet size or inter-arrival time</span>
+                                </div>
+                            </div>
+                            <form class="input-form">
+                                <div class="input-row">
+                                    <input type="text" id="pkSeqID" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="proto" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="saddr" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="sport" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="daddr" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="dport" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="seq" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="stddev" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="N_IN_Conn_P_SrcIP" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="min" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="state_number" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="mean" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="N_IN_Conn_P_DstIP" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="drate" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="srate" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="max" name="fname" class="dataset-cell-input">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="demo-button-container">
+                            <button class="analyze-button" id="analyze-button-one">
+                                Analyze
+                            </button>
+                        </div>
+                    </div>
+                    <div class="demo-one-container">
+                    <div class="demo-buttons-container">
+                        <button class="load-dataset-button" id="load-dataset-one">Load Dataset 1</button>
+                        <button class="load-dataset-button" id="load-dataset-two">Load Dataset 2</button>
+                        <button class="load-dataset-button" id="load-dataset-three">Load Dataset 3</button>
+                        <button class="load-dataset-button" id="load-dataset-four">Load Dataset 4</button>
+                        <button class="load-dataset-button" id="load-dataset-five">Load Dataset 5</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="analysis-result-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-button">&times;</span>
+            <div id="result-text">
+                <div id="permanent-result-text">
+                    Network Analysis Results
+                </div>
+                <div class="divider-line"></div>
+                <div id="classification-result-text">
+                    Analysis result
+                </div>
+                <div id="category-result-text">
+                    Analysis result
+                </div>
+                <div id="subcategory-result-text">
+                    Analysis result
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/scripts/functions.js"></script>
+</body>
+
+</html>

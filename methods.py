@@ -33,4 +33,24 @@ def index_data(collection, idx):
     pkSeqID_index = collection.create_index(idx)
     item_details = collection.find({"pkSeqID": "792371"})
     return item_details
+
+def parse_input_flow(flow_dict: dict) -> dict:
+   return{
+      "pkSeqID": int(flow_dict["pkSeqID"]),
+      "proto": flow_dict["proto"],
+      "saddr": flow_dict["saddr"],
+      "sport": flow_dict["sport"],
+      "daddr": flow_dict["daddr"],
+      "dport": flow_dict["dport"],
+      "seq": int(flow_dict["seq"]),
+      "stddev": float(flow_dict["stddev"]),
+      "N_IN_Conn_P_SrcIP": int(flow_dict["N_IN_Conn_P_SrcIP"]),
+      "min": float(flow_dict["min"]),
+      "state_number": int(flow_dict["state_number"]),
+      "mean": float(flow_dict["mean"]),
+      "N_IN_Conn_P_DstIP": int(flow_dict["N_IN_Conn_P_DstIP"]),
+      "drate": float(flow_dict["drate"]),
+      "srate": float(flow_dict["srate"]),
+      "max": float(flow_dict["max"]),
+   }
     

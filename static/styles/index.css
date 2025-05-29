@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap');
+
+html, body{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  min-height:100vh;
+  background-color: #ffffff;
+  font-family:'Helvetica';
+  color: rgb(0, 0, 0);
+  overflow:auto;
+  scroll-behavior: smooth;
+  letter-spacing: 0.1rem;
+}
+
+#card{
+  width:100vw;
+  display:flex;
+  flex-direction: column;
+}
+
+#top-rectangle{
+    width:100%;
+    font-size:126%;
+    padding:2% 2.75% 2% 15%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap:0.7%;
+    font-weight: 500;
+}
+
+#bottom-rectangle{
+  width:100%;
+  font-size:120%;
+  padding:2% 10% 7% 10%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.half-logo{
+    background-color: #0096ff;;
+    height: 2rem;
+    width: 4rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size:1.25rem;
+    letter-spacing: 0.15rem;
+}
+
+.half-logo:hover{
+    cursor: pointer;
+}
+
+.logo{
+    margin-left:2%;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+.header-mini{
+    font-size:70%;
+    font-weight: 200;
+    color: rgb(67, 67, 67);
+    margin-left:4%;
+}
+
+.header-mini:hover{
+    cursor: pointer;
+}
+
+.devpost-button{
+    background-color: #0096ff;
+    padding:0.75% 2% 0.75% 2%;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 200;
+    font-size:70%;
+    background-color: #0096ff;
+    margin-left:4%;
+}
+
+.analyze-button{
+    background-color: #0096ff;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: 200;
+    font-size:0.75rem;
+    border:none;
+}
+
+.load-dataset-button{
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: 200;
+    font-size:0.75rem;
+    border:none;
+    margin-top:1rem;
+    background-color: #0096ff;
+    color: white;
+    width:20%;
+    border: 0.5px solid rgb(196, 196, 196);
+}
+
+.load-dataset-button:hover{
+    cursor: pointer;
+    filter:brightness(1.1);
+}
+
+.demo-buttons-container{
+    display: flex;
+    justify-content: center;
+    gap:40px;
+}
+
+.profile-image{
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin:0;
+    margin-top:2.5rem;
+}
+
+.name{
+    color: white;
+    font-size:1rem;
+    padding:0.5rem 0 0.5rem 0;
+    margin-top:2rem;
+    background-color: #fbfafd;
+    color: black;
+    border: 0.5px solid rgb(196, 196, 196);
+    width:15rem;
+    display: flex;
+    justify-content: center;
+}
+
+.points{
+    font-size:1rem;
+    display: flex;
+    flex-direction: column;
+    gap:0.25rem;
+    margin-top:1.5rem;
+    margin-bottom:1rem;
+}
+
+.points > div{
+    display: flex;
+    align-items: center;
+}
+
+.bullet-point{
+    font-size:1.5rem;
+    margin-left:0.25rem;
+    margin-right:0.25rem;
+    vertical-align: top;
+    line-height:1;
+    position: relative;
+    top:0.3rem;
+}
+
+.analyze-button:hover, .devpost-button:hover{
+    cursor: pointer;
+    filter:brightness(1.1);
+}
+
+.demo-button-container{
+    display: flex;
+    flex-direction: row;
+    gap:1.5%;
+}
+
+.demo-video-button{
+    background-color: white;
+    color: black;
+    outline: 1px solid black;
+    padding:1% 3% 1% 3%;
+}
+
+.catchphrase{
+    font-size:200%;
+    font-weight:700;
+    margin-top:1%;
+}
+
+.top-catchphrase{
+    font-size:200%;
+    font-weight:700;
+    margin-top:6.5%;
+}
+
+.blue-text{
+    color:#0096ff;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 0.45rem;
+}
+
+.blue-text:hover{
+    cursor: pointer;
+}
+
+.description{
+    font-size:90%;
+    font-weight: 300;
+    margin-top:0.5%;
+}
+
+.spacer{
+    margin-top:2%;
+}
+
+.button-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top:1.5%;
+    width: 100%;
+}
+
+.base-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dataset-inner-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cell{
+    border: 1.5px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:20px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(255, 255, 255);
+    border: 0.5px solid rgb(196, 196, 196);
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    font-size: 0.85rem;
+}
+
+.tooltip:hover .tooltiptext {
+visibility: visible;
+}
+
+.demo-one-title{
+    font-size:70%;
+    margin-top:1.2%;
+}
+
+.model-title{
+    background-color: #fbfafd;
+    border: 0.5px solid rgb(196, 196, 196);
+    padding: 1% 1% 1% 1%;
+    font-size:145%;
+    margin-bottom: 0.7%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-title{
+    background-color: #fbfafd;
+    border: 0.5px solid rgb(196, 196, 196);
+    padding: 1% 1% 1% 1%;
+    font-size:145%;
+    margin-bottom: 0.7%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title-block{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.demo-one-container{
+    background-color: #fbfafd;
+    border: 0.5px solid rgb(196, 196, 196);
+    padding: 0% 1% 1% 1%;
+    font-size:145%;
+    margin-bottom: 0.7%;
+    margin-top:2%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.model-description{
+    font-size:50%;
+    margin-top:0.7%;
+}
+
+li{
+    font-size:50%;
+    margin-top: 1%;
+}
+
+ul{
+    margin-top:0;
+    margin-bottom:0;
+}
+
+#dataset-anchor{
+    position: relative;
+    top:13%;
+    height:0;
+}
+
+#dataset-content{
+    padding-top:25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top:10px;
+}
+
+#demo-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top:10px;
+}
+
+.divider-line{
+    border-bottom:0.5px solid rgb(196, 196, 196);
+    margin-top: 0.5%;
+    margin-bottom:0.75%;
+}
+
+.divider-line-about{
+    border-bottom:0.5px solid rgb(196, 196, 196);
+    margin-top: 0.5%;
+    width:100%;
+}
+
+.divider-space{
+    margin-top:1%;
+}
+
+.dataset-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.graph-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5%;
+    max-width:55%;
+    margin:1.5% auto;
+    margin-bottom:7%;
+}
+
+.graph-grid img{
+    width:100%;
+    height:auto;
+    display: block;
+    object-fit: cover;
+}
+
+.dataset{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 10%;
+    margin-top:1%;
+}
+
+.dataset-header-cell{
+    background-color: #fbfafd;
+}
+
+.dataset-cell-input{
+    margin-top:1.25rem;
+    width:80%;
+    height:25%;
+    padding: 8px;
+    text-align: center;
+    font-size:0.65rem;
+    border: 0.5px solid rgb(196, 196, 196);
+    background-color: white;
+    font-size:0.75rem;
+    color: black;
+}
+
+.dataset-header-cell,
+.dataset-cell{
+    padding: 8px;
+    text-align: center;
+    font-size:0.65rem;
+    border: 0.5px solid rgb(196, 196, 196);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:0.65rem;
+    color: black;
+}
+
+.dataset,.input-row{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    width:100%;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    gap:0;
+    width:100%;
+}
+
+.input-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    width:100%;
+    margin:0;
+    padding:0;
+    grid-template-rows: 1fr;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top:7.5%;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content{
+    background-color: #fbfafd;
+    margin:auto;
+    padding:1%;
+    padding-top:0.65%;
+    border: 1px solid rgb(196, 196, 196);
+    width:24%;
+    text-align: center;
+    font-size:1.1rem;
+}
+
+#close-button{
+    color: rgb(196, 196, 196);
+    float: right;
+    font-size:1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#close-sample-button{
+    color: rgb(196, 196, 196);
+    float: right;
+    font-size:1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#close-button:hover{
+    color: black;
+}
+
+.sample-datasets-list{
+    display: flex;
+    justify-content: center;
+    padding-top:3%;
+    font-size:1.3rem;
+    flex-direction: column;
+}
+
+.list-datasets{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top:3%;
+}
+
+.bullet-point-dataset{
+    list-style: none;
+    font-size:1rem;
+    padding-top:0.5%;
+    padding-bottom:0.5%;
+}
+
+#close-sample-button:hover{
+    color: black;
+}
+
+#permanent-result-text{
+    padding-top:2rem;
+    font-size:1.35rem;
+}
+
+#classification-result-text{
+    margin-top:2rem;
+    font-size:1rem;
+    text-align: left;
+    padding-left:1rem;
+}
+
+#category-result-text{
+    margin-top:1rem;
+    font-size:1rem;
+    text-align: left;
+    padding-left:1rem;
+}
+
+#subcategory-result-text{
+    margin-top:1rem;
+    font-size:1rem;
+    text-align: left;
+    padding-left:1rem;
+    padding-bottom:2rem;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
+    color: #0096ff;
+}
+
+#github-button a:hover{
+    cursor: pointer;
+    filter:brightness(1.1);
+    color: white
+}
+
+#diagram-image-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+#diagram-image{
+    width:50%;
+}
+
+a.in-text-links{
+    color:#0096ff;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15rem;
+}
+
+a.github-button{
+    background-color: black;
+    padding:1% 3% 1% 3%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 200;
+    font-size:70%;
+    margin-left:4%;
+}
+
+@media(max-width:480px){
+}

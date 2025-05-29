@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>IoTPacketPatrol</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="icon" type="image/x-icon" href="/static/assets/images/tab-icon.png">
+</head>
+
+<body>
+    <div id = "card">
+        
+        <div id = "top-rectangle">
+            <a href="/" class="base-button">
+                <div class="half-logo">
+                    IOT
+                </div>
+                <div class="logo">PacketPatrol</div>
+            </a>
+            <a href = "#dataset-anchor" class="header-mini">Project Architecture</a>
+            <a href = "/demo" class="header-mini">Live Demo</a>
+            <a href = "/about" class="header-mini">About</a>
+            <div class="devpost-button">
+                Devpost
+            </div>
+        </div>
+        <div id = "bottom-rectangle">
+            <div class = "top-catchphrase">
+                Check the security of your device's 
+            </div>
+            <div class = "catchphrase">
+                network with just <span class="blue-text"><a href="/demo">one click</a></span>.
+            </div>
+            <div class = "description spacer">
+                A ML-based approach to identifying malicious network traffic for IoT devices,
+            </div>
+            <div class = "description">
+                complete with a comprehensive analytics dashboard.
+            </div>
+            <div class="button-wrapper">
+                <a href="https://github.com/rrachelhuangg/IoTPacketPatrol" target="_blank" class="github-button spacer" id="github-button">Github</a>
+                <div class="devpost-button demo-video-button spacer">
+                    Demo Video
+                </div>
+            </div>
+
+            <div id="dataset-anchor"></div>
+            <div id = "dataset-content">
+                <div class = "model-title">
+                    Project Architecture
+                    <div class="divider-line"></div>
+                    <div class = "model-description">
+                        The data used for this project is a 733,705 element dataset curated by Dyuti_Dasmahaptra on Kaggle and can be found
+                        <a href="https://www.kaggle.com/datasets/dyutidasmahaptra/iot-botnet-traffic-dataset" class="in-text-links">here</a>. The dataset 
+                        contains network traffic collected from Internet of Things 
+                        (IoT) devices that were operating in environments affected by botnet attacks. Each row in the dataset represents
+                        a single network flow with packet sequence ID, used protocol, source and destination IP addresses, source and 
+                        destination ports, and a variety of other defining network characteristics. Each network is given a label to 
+                        identify if it is an attack and is also subcategorized into its corresponding attack types, if applicable. 
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class = "model-description">
+                        Univariate plots were created for select features from the dataset. Due to the size of the dataset,
+                        these plots were created with only 250,000 (~35%) of the dataset, but display patterns applicable to the entire dataset.
+                        There was a significantly greater number of malicious 
+                        networks in the training and testing datasets as compared to benign, so the imbalanced dataset was addressed
+                        by setting scikit-learn's class weight parameter was to balanced during model training. This class weight parameter 
+                        automatically adjusted weights inversely proportional to class frequencies. Deviations from typical mean packet
+                        inter-arrival time helped distinguish network traffic, and large numbers of inbound connections usually indicated a scanning or DDoS network attack. 
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class="graph-grid">
+                        <img src="static/assets/images/graph_4.png">
+                        <img src="static/assets/images/graph_2.png">
+                        <img src="static/assets/images/graph_1.png">
+                        <img src="static/assets/images/graph_3.png">
+                        <img src="static/assets/images/graph_6.png">
+                        <img src="static/assets/images/graph_5.png">
+                    </div>
+                    <div class = "model-description">
+                        80% of the dataset was randomly split and used for training, while the remaining 20% of the dataset was used for testing the 
+                        model. To prepare the training portion of the dataset, the network flow data was parsed so that categorical 
+                        independent variables were one-hot encoded and ip variables were cast to ipaddress types.  
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class = "model-description">
+                        The data was then used to train a scikit-learn MultiOutputClassifier model, which applied a logistic regression model
+                        to the multi-label classification problem of identifying the categories and subcategories of a malicious network. 
+                        The MultiOutputClassifier trained three logistic regression models as independent classifiers for the three output labels:
+                        attack identification, attack category, and attack subcategory.
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class = "model-description">
+                        The datasets and trained models were stored in MongoDB's Atlas Database. A FastAPI layer was then built on top of the 
+                        database with a handful of endpoints that allow the user to query the database. 
+                        The live demo page is linked to an endpoint that allows the user to use the trained
+                        model to make predictions on inference data. The other endpoints can be found at 
+                        <a href="https://iotpacketpatrol.onrender.com/docs" class="in-text-links">https://iotpacketpatrol.onrender.com/docs</a>, and are 
+                        integrated with a client-side UI that is deployed with Render, a cloud PaaS for
+                        deploying web apps.
+                    </div>
+                    <div id="diagram-image-container">
+                        <img src="static/assets/images/project_diagram.png" id="diagram-image">
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

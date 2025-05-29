@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+dotenv
+pymongo
+pandas
+pydantic
+ipaddress
+nbformat>=4.2.0
+requests
+scikit-learn
