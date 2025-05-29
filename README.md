@@ -2,3 +2,4 @@
 - [ ] Create appropriate .env/requirements.txt files as appropriate if needed
 - [ ] Integrate MongoDB with FastAPI endpoints
 - [ ] Integrate FastAPI with Flask
+- [ ] Look into Git LFS
