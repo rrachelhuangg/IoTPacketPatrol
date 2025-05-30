@@ -9,3 +9,4 @@
 - [ ] Build UI and polish it
 - [ ] Check out database validation
 - [ ] Look into update method of CRUD
+- [ ] Squash git commits...

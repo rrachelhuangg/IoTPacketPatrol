@@ -13,7 +13,7 @@ async def root_page():
 @app.on_event("startup")
 def startup_db_client():
     app.mongodb_client = MongoClient(os.getenv('ATLAS_URI'))
-    app.database = app.mongodb_client(os.getenv('DB_NAME'))
+    app.database = app.mongodb_client[os.getenv('DB_NAME')]
 
 @app.on_event("shutdown")
 def shutdown_db_client():
