@@ -8,6 +8,10 @@ config = dotenv_values(".env")
 
 app = FastAPI()
 
+@app.get('/')
+async def root_page():
+    return {"HELLO": "WORLD!"}
+
 @app.on_event("startup")
 def startup_db_client():
     # app.mongodb_client = MongoClient(config["ATLAS_URI"])
