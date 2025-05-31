@@ -1,8 +1,7 @@
 - [x] Ingest data into MongoDB (Atlas cluster, in this case) :tada:
 - [x] Create appropriate .env/requirements.txt files as appropriate if needed
 - [x] Integrate MongoDB with FastAPI endpoints
-- [ ] Integrate FastAPI with Flask
-- [ ] Deploy FastAPI with Vercel
+- [x] Deploy FastAPI with Render
 - [ ] Look into Git LFS
 - [ ] Train ML model(s)
 - [ ] Generate interactive visualizations
