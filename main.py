@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from dotenv import dotenv_values
 from pymongo import MongoClient
+from dotenv import load_dotenv
 from routes import router as flows_router
 import os
 
 app = FastAPI()
+load_dotenv()
 
 @app.get('/')
 async def root_page():
