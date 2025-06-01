@@ -5,3 +5,4 @@ pymongo
 pandas
 pydantic
 ipaddress
+certifi
