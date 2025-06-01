@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 dotenv
-pymongo>=4.5.0
+pymongo==3.12.3
 pandas
 pydantic
 ipaddress
