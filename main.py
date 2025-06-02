@@ -3,14 +3,21 @@ from dotenv import dotenv_values
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from routes import router as flows_router
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 import os
 
 app = FastAPI()
 load_dotenv()
 
+app.mount("/static", StaticFiles(directory="../"), name="static")
+
 @app.get('/')
 async def root_page():
-    return {"HELLO": "WORLD!"}
+    # return {"HELLO": "WORLD!"}
+    with open("../pages/index.html", "r") as file:
+        html_content = file.read()
+    return HTMLResponse(content=html_content, status_code=200)
 
 @app.on_event("startup")
 def startup_db_client():

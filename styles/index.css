@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap');
+
+html, body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  min-height:100vh;
+  background-color: #ffffff;
+  font-family:'JetBrains Mono';
+  color: rgb(0, 0, 0);
+  overflow:auto;
+}
+
+#card{
+  width:100vw;
+  display:flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#top-rectangle{
+    width:100%;
+    font-size:126%;
+    padding:2% 2.75% 2% 15%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap:0.7%;
+    font-weight: 500;
+}
+
+#bottom-rectangle{
+  width:100%;
+  font-size:120%;
+  padding:7% 10% 7% 10%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.half-logo{
+    background-color: #0096ff;;
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size:1.25rem;
+    letter-spacing: 0.15rem;
+}
+
+.half-logo:hover{
+    cursor: pointer;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+.header-mini{
+    font-size:70%;
+    font-weight: 200;
+    color: rgb(67, 67, 67);
+    margin-left:4%;
+}
+
+.header-mini:hover{
+    cursor: pointer;
+}
+
+.devpost-button{
+    background-color: #0096ff;
+    padding:0.75% 2% 0.75% 2%;
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 200;
+    font-size:70%;
+    background-color: #0096ff;
+    margin-left:4%;
+}
+
+.devpost-button:hover{
+    cursor: pointer;
+    filter:brightness(1.1);
+}
+
+.github-button{
+    background-color: black;
+    padding:1% 3% 1% 3%;
+}
+
+.demo-video-button{
+    background-color: white;
+    color: black;
+    outline: 1px solid black;
+    padding:1% 3% 1% 3%;
+}
+
+.catchphrase{
+    font-size:200%;
+    font-weight:700;
+    margin-top:0.5%;
+}
+
+.blue-text{
+    color:#0096ff;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 0.45rem;
+}
+
+.blue-text:hover{
+    cursor: pointer;
+}
+
+.description{
+    font-size:90%;
+    font-weight: 300;
+    margin-top:0.5%;
+}
+
+.spacer{
+    margin-top:2%;
+}
+
+.button-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top:1.5%;
+    width: 100%;
+}
+
+@media(max-width:480px){
+}
