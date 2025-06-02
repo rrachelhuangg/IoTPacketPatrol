@@ -10,7 +10,7 @@ import os
 app = FastAPI()
 load_dotenv()
 
-app.mount("/", StaticFiles(directory="../"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get('/')
 async def root_page():
