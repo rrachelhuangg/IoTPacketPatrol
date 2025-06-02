@@ -9,3 +9,4 @@
 - [ ] Check out database validation
 - [ ] Look into update method of CRUD
 - [ ] Squash git commits...
+- [ ] Figure out the live user testing (if there will be any, having an endpoint for it, providing sample inference data, etc.)

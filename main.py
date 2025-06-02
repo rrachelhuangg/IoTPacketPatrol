@@ -10,12 +10,12 @@ import os
 app = FastAPI()
 load_dotenv()
 
-app.mount("/static", StaticFiles(directory="../"), name="static")
+app.mount("/", StaticFiles(directory="../"), name="static")
 
 @app.get('/')
 async def root_page():
     # return {"HELLO": "WORLD!"}
-    with open("../pages/index.html", "r") as file:
+    with open("pages/index.html", "r") as file:
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 
