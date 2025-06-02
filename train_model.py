@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import ipaddress
+import pickle
 
 #call list_flows endpoint and iterate thorugh it for the inner func of the wrapper func
 def get_flows(method='get', data=None, headers=None):
@@ -45,44 +46,43 @@ def parse_flows(flows):
 def one_hot_encode(x):
     #one hot encode categorical columns of independent variables and return as a list
     data = {}
-    for i in range(18): #attributes
-        data['pkSeqID'] = []
-        data['proto'] = []
-        data['saddr'] = []
-        data['sport'] = []
-        data['daddr'] = []
-        data['dport'] = []
-        data['seq'] = []
-        data['stddev'] = []
-        data['N_IN_Conn_P_SrcIP'] = []
-        data['min'] = []
-        data['state_number'] = []
-        data['mean'] = []
-        data['N_IN_Conn_P_DstIP'] = []
-        data['drate'] = []
-        data['srate'] = []
-        data['max'] = []
-        data['category'] = []
-        data['subcategory'] = []
-        for j in x: #row in x_data
-            data['pkSeqID'] += [j[0]]
-            data['proto'] += [j[1]]
-            data['saddr'] += [j[2]]
-            data['sport'] += [j[3]]
-            data['daddr'] += [j[4]]
-            data['dport'] += [j[5]]
-            data['seq'] += [j[6]]
-            data['stddev'] += [j[7]]
-            data['N_IN_Conn_P_SrcIP'] += [j[8]]
-            data['min'] += [j[9]]
-            data['state_number'] += [j[10]]
-            data['mean'] += [j[11]]
-            data['N_IN_Conn_P_DstIP'] += [j[12]]
-            data['drate'] += [j[13]]
-            data['srate'] += [j[14]]
-            data['max'] += [j[15]]
-            data['category'] += [j[16]]
-            data['subcategory'] += [j[17]]
+    data['pkSeqID'] = []
+    data['proto'] = []
+    data['saddr'] = []
+    data['sport'] = []
+    data['daddr'] = []
+    data['dport'] = []
+    data['seq'] = []
+    data['stddev'] = []
+    data['N_IN_Conn_P_SrcIP'] = []
+    data['min'] = []
+    data['state_number'] = []
+    data['mean'] = []
+    data['N_IN_Conn_P_DstIP'] = []
+    data['drate'] = []
+    data['srate'] = []
+    data['max'] = []
+    data['category'] = []
+    data['subcategory'] = []
+    for j in x: #row in x_data
+        data['pkSeqID'] += [j[0]]
+        data['proto'] += [j[1]]
+        data['saddr'] += [j[2]]
+        data['sport'] += [j[3]]
+        data['daddr'] += [j[4]]
+        data['dport'] += [j[5]]
+        data['seq'] += [j[6]]
+        data['stddev'] += [j[7]]
+        data['N_IN_Conn_P_SrcIP'] += [j[8]]
+        data['min'] += [j[9]]
+        data['state_number'] += [j[10]]
+        data['mean'] += [j[11]]
+        data['N_IN_Conn_P_DstIP'] += [j[12]]
+        data['drate'] += [j[13]]
+        data['srate'] += [j[14]]
+        data['max'] += [j[15]]
+        data['category'] += [j[16]]
+        data['subcategory'] += [j[17]]
     df = pd.DataFrame(data)
     
     categorical_columns = ['proto', 'category', 'subcategory']
@@ -98,7 +98,7 @@ def one_hot_encode(x):
     for index, row in dataframe.iterrows():
         x_vals += [row]
 
-    return x_vals
+    return x_vals, encoder
 
 def process_ip_cols(df):
     ip_vals_one = df['saddr']
@@ -132,19 +132,46 @@ def process_ip_cols(df):
 
 def train():
     X_init, y = parse_flows(get_flows())
-    X = one_hot_encode(X_init)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X, encoder = one_hot_encode(X_init)
     scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.fit_transform(X_test)
-    model = LogisticRegression(random_state=42)
-    model.fit(X_train_scaled, y_train)
-    y_pred = model.predict(X_test_scaled)
-    accuracy = accuracy_score(y_test, y_pred)
+    X_scaled = scaler.fit_transform(X)
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=1)
+    model = LogisticRegression(class_weight='balanced', max_iter = 1000, solver='lbfgs', penalty = 'l2')
+    model.fit(X_train, y_train)
+    print("TRAIN ACCURACY: ", model.score(X_train, y_train))
+    print("TEST ACCURACY: ", model.score(X_test, y_test))
+    y_pred = model.predict(X_test)
     conf_matrix = confusion_matrix(y_test, y_pred)
     class_report = classification_report(y_test, y_pred)
-    print(f"Accuracy: {accuracy}")
     print(f"Confusion Matrix: {conf_matrix}")
     print(f"Classification report: {class_report}")
+    return model, encoder, scaler
 
-train()
+def test_model():
+    #should move this to an endpoint so that model can be tested from ui
+    file_name = "trained_model.pkl"
+    loaded_model = None
+
+    flows = get_flows()[4522:4523]
+    X_init, _ = parse_flows(flows)
+    X_df = pd.DataFrame([X_init[0]], columns = ['pkSeqID', 'proto', 'saddr', 'sport', 'daddr', 'dport', 'seq', 'stddev', 'N_IN_Conn_P_SrcIP', 'min', 'state_number', 'mean', 'N_IN_Conn_P_DstIP', 'drate', 'srate', 'max', 'category', 'subcategory'])
+    with open(file_name, "rb") as file:
+        loaded_model, loaded_encoder, loaded_scaler = pickle.load(file)
+
+    X_df = process_ip_cols(X_df)
+    one_hot_x_df = pd.DataFrame(
+        loaded_encoder.transform(X_df[['proto', 'category', 'subcategory']]),
+        columns=loaded_encoder.get_feature_names_out(['proto', 'category', 'subcategory'])
+    )
+    X_df = pd.concat([X_df.drop(['proto', 'category', 'subcategory'], axis=1), one_hot_x_df], axis=1)
+    X_scaled = loaded_scaler.transform(X_df)
+
+    predictions = loaded_model.predict(X_scaled)
+    return predictions
+
+if __name__ == "__main__":
+    file_name = "trained_model.pkl"
+    # trained_model, encoder, scaler = train()
+    # with open(file_name, "wb") as file:
+    #     pickle.dump((trained_model, encoder, scaler), file)
+        
