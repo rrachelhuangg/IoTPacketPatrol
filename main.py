@@ -15,7 +15,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get('/')
 async def root_page():
     # return {"HELLO": "WORLD!"}
-    with open("pages/index.html", "r") as file:
+    with open("index.html", "r") as file:
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 
