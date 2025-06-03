@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from routes import router as flows_router
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+
 import os
 
 app = FastAPI()
@@ -14,8 +15,13 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get('/')
 async def root_page():
-    # return {"HELLO": "WORLD!"}
-    with open("index.html", "r") as file:
+    with open("pages/index.html", "r") as file:
+        html_content = file.read()
+    return HTMLResponse(content=html_content, status_code=200)
+
+@app.get('/dashboard')
+async def dashboard_page():
+    with open("pages/dashboard.html", "r") as file:
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 

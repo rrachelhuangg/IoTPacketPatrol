@@ -43,8 +43,7 @@ html, body{
 
 .half-logo{
     background-color: #0096ff;;
-    border-radius: 50%;
-    height: 4rem;
+    height: 2rem;
     width: 4rem;
     color: rgb(255, 255, 255);
     display: flex;
@@ -57,6 +56,10 @@ html, body{
 
 .half-logo:hover{
     cursor: pointer;
+}
+
+.logo{
+    margin-left:2%;
 }
 
 .logo:hover{
@@ -138,6 +141,57 @@ html, body{
     align-items: center;
     margin-top:1.5%;
     width: 100%;
+}
+
+.base-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo-content{
+    background-color: #0096ff;
+    color: white;
+    height:90%;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.demo-title{
+    font-size:180%;
+    margin-bottom: 1rem;
+}
+
+.demo-description{
+    font-size:80%;
+}
+
+.demo-image{
+    width:100%;
+    margin:0;
+    display: block;
+    background-color: lightgray;
+    padding:2% 5% 2% 5%;
+    color: black;
+}
+
+.demo-table{
+    margin:2% auto 0 auto;
+    text-align:center;
+    border-collapse: collapse;
+}
+
+.demo-tab{
+    padding-left:0rem;
+}
+
+.demo-display{
+    padding-right:0;
+    padding-left:5rem;
 }
 
 @media(max-width:480px){
