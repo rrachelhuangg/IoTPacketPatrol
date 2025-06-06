@@ -4,9 +4,12 @@
 - [x] Deploy FastAPI with Render
 - [ ] Look into Git LFS
 - [x] Train ML model(s)
-- [ ] Generate interactive visualizations
+- [x] Generate interactive visualizations
+- [x] Make model page
+- [ ] Make dataset page with bar graphs of values in training and testing datasets
 - [ ] Build UI and polish it
 - [ ] Check out database validation
 - [ ] Look into update method of CRUD
 - [ ] Squash git commits...
 - [ ] Figure out the live user testing (if there will be any, having an endpoint for it, providing sample inference data, etc.)
+- [ ] Make datasets for live testing if any
