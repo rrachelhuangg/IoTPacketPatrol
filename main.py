@@ -19,21 +19,9 @@ async def root_page():
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 
-@app.get('/dashboard')
-async def dashboard_page():
-    with open("pages/dashboard.html", "r") as file:
-        html_content = file.read()
-    return HTMLResponse(content=html_content, status_code=200)
-
-@app.get('/analytics')
-async def analytics_page():
-    with open("pages/analytics.html", "r") as file:
-        html_content = file.read()
-    return HTMLResponse(content=html_content, status_code=200)
-
-@app.get('/model')
+@app.get('/demo')
 async def model_page():
-    with open("pages/model.html", "r") as file:
+    with open("pages/demo.html", "r") as file:
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 

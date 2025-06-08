@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>IoTPacketPatrol</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+    <link rel="stylesheet" href="/static/styles/index.css">
+</head>
+
+<body>
+    <div id = "card">
+        
+        <div id = "top-rectangle">
+            <a href="/" class="base-button">
+                <div class="half-logo">
+                    IOT
+                </div>
+                <div class="logo">PacketPatrol</div>
+            </a>
+            <a href = "/#dataset-anchor" class="header-mini">Dataset</a>
+            <a href = "/#model-anchor" class="header-mini">Model</a>
+            <a href = "/demo" class="header-mini">Live Demo</a>
+            <div class="header-mini">Team</div>
+            <div class="devpost-button">
+                Devpost
+            </div>
+        </div>
+        <div id = "bottom-rectangle">
+            <div id="demo-anchor"></div>
+            <div id = "demo-content">
+                <div class = "model-title">
+                    Using the PacketPatrol Model for Analyzing Networks
+                    <div class="divider-line"></div>
+                    <div class = "model-description">
+                        There are two ways to use the PacketPatrol model: 
+                    </div>
+                    <ul>
+                        <li>Network flow data can be entered below in the interface</li>
+                        <li>A data file containing network flows of the same format as the dataset excerpt can be uploaded</li>
+                    </ul>
+                </div>
+                <div class="dataset-container">
+                    <div class="demo-one-container">
+                        <div class="demo-one-title">
+                            Enter your data here:
+                            <div class="divider-line"></div>
+                        </div>
+                        <div class="dataset-inner-container">
+                            <div class="dataset">
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    pkSeqID
+                                    <span class="tooltiptext dataset-tooltip">Unique packet sequence ID</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    proto
+                                    <span class="tooltiptext">Protocol used</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    saddr
+                                    <span class="tooltiptext">Source IP address</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    sport
+                                    <span class="tooltiptext">Source port</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    daddr
+                                    <span class="tooltiptext">Destination IP address</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    dport
+                                    <span class="tooltiptext">Destination port</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    seq
+                                    <span class="tooltiptext">Sequence number of the packet</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    stddev
+                                    <span class="tooltiptext">Standard deviation of inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    n_in_srcip
+                                    <span class="tooltiptext">Number of inbound connections per source IP</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    min
+                                    <span class="tooltiptext">Minimum packet size or inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    state_n
+                                    <span class="tooltiptext">Encoded representation of connection state</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    mean
+                                    <span class="tooltiptext">Mean packet size or inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    n_in_dstip
+                                    <span class="tooltiptext">Number of inbound connections per destination IP</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    drate
+                                    <span class="tooltiptext">Data rate of the connection</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    srate
+                                    <span class="tooltiptext">Session rate or flow creation rate</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="testing">
+                                    max
+                                    <span class="tooltiptext">Maximum packet size or inter-arrival time</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="hello">
+                                    attack
+                                    <span class="tooltiptext">Binary label (1 = attack, 0 = benign)</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="world">
+                                    category
+                                    <span class="tooltiptext">Broad category of the attack (e.g., DDoS, PortScan)</span>
+                                </div>
+                                <div class="dataset-header-cell tooltip" title="test">
+                                    sub_cat
+                                    <span class="tooltiptext">Specific method or type of attack (e.g., SYN Flood, Mirai-UDP)</span>
+                                </div>
+                            </div>
+                            <form class="input-form">
+                                <div class="input-row">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                    <input type="text" id="pkSeqID_1" name="fname" class="dataset-cell-input">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="demo-button-container">
+                            <button class="analyze-button">
+                                Analyze
+                            </button>
+                            <button class="analyze-button add-row-button">
+                                Add Input Row
+                            </button>
+                        </div>
+                    </div>
+                    <div class="demo-one-container">
+                    <div class="demo-one-title">
+                        <div class="divider-space"></div>
+                        Upload your data here:
+                        <form>
+                            <label for="myFile" class="analyze-button upload-button">Upload Dataset</label>
+                            <input type="file" id="myFile" name="filename">
+                        </form>
+                        <div class="divider-line"></div>
+                    </div>
+                    <div class="dataset">
+                        <div class="dataset-header-cell tooltip" title="hello">
+                            pkSeqID
+                            <span class="tooltiptext dataset-tooltip">Unique packet sequence ID</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="world">
+                            proto
+                            <span class="tooltiptext">Protocol used</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="test">
+                            saddr
+                            <span class="tooltiptext">Source IP address</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="testing">
+                            sport
+                            <span class="tooltiptext">Source port</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="hello">
+                            daddr
+                            <span class="tooltiptext">Destination IP address</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="world">
+                            dport
+                            <span class="tooltiptext">Destination port</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="test">
+                            seq
+                            <span class="tooltiptext">Sequence number of the packet</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="testing">
+                            stddev
+                            <span class="tooltiptext">Standard deviation of inter-arrival time</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="hello">
+                            n_in_srcip
+                            <span class="tooltiptext">Number of inbound connections per source IP</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="world">
+                            min
+                            <span class="tooltiptext">Minimum packet size or inter-arrival time</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="test">
+                            state_n
+                            <span class="tooltiptext">Encoded representation of connection state</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="testing">
+                            mean
+                            <span class="tooltiptext">Mean packet size or inter-arrival time</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="hello">
+                            n_in_dstip
+                            <span class="tooltiptext">Number of inbound connections per destination IP</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="world">
+                            drate
+                            <span class="tooltiptext">Data rate of the connection</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="test">
+                            srate
+                            <span class="tooltiptext">Session rate or flow creation rate</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="testing">
+                            max
+                            <span class="tooltiptext">Maximum packet size or inter-arrival time</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="hello">
+                            attack
+                            <span class="tooltiptext">Binary label (1 = attack, 0 = benign)</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="world">
+                            category
+                            <span class="tooltiptext">Broad category of the attack (e.g., DDoS, PortScan)</span>
+                        </div>
+                        <div class="dataset-header-cell tooltip" title="test">
+                            sub_cat
+                            <span class="tooltiptext">Specific method or type of attack (e.g., SYN Flood, Mirai-UDP)</span>
+                        </div>
+                        <!-- divider between rows -->
+                        <div class="dataset-cell" title="hello">
+                            792371
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            udp
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            192.168.100.150
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            48516
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            192.168.100.3
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            80
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            175094
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            0.226784
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            100
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            4.100436
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            4
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            4.457383
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            100
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            0.0
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            0.404711
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            4.719438
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            1
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            DoS
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            UDP
+                        </div>
+                        <!-- divider between rows -->
+                        <div class="dataset-cell" title="hello">
+                            2056418
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            tcp
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            192.168.100.148
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            22267
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            192.168.100.3
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            80
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            143024
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            0.451998
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            100
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            3.439257
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            1
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            3.806172
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            100
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            0.225077
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            0.401397
+                        </div>
+                        <div class="dataset-cell" title="testing">
+                            4.44293
+                        </div>
+                        <div class="dataset-cell" title="hello">
+                            1
+                        </div>
+                        <div class="dataset-cell" title="world">
+                            DDoS
+                        </div>
+                        <div class="dataset-cell" title="test">
+                            TCP
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

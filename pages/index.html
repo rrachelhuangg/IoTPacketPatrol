@@ -18,16 +18,16 @@
                 </div>
                 <div class="logo">PacketPatrol</div>
             </a>
-            <a href = "/model" class="header-mini">Model</a>
-            <a href = "/dashboard" class="header-mini">Dashboard</a>
-            <a href = "/analytics" class="header-mini">Analytics</a>
+            <a href = "#dataset-anchor" class="header-mini">Dataset</a>
+            <a href = "#model-anchor" class="header-mini">Model</a>
+            <a href = "/demo" class="header-mini">Live Demo</a>
             <div class="header-mini">Team</div>
             <div class="devpost-button">
                 Devpost
             </div>
         </div>
         <div id = "bottom-rectangle">
-            <div class = "catchphrase">
+            <div class = "top-catchphrase">
                 Check the security of your device's 
             </div>
             <div class = "catchphrase">
@@ -47,6 +47,626 @@
                     Demo Video
                 </div>
             </div>
+
+            <div id="dataset-anchor"></div>
+            <div id = "dataset-content">
+                <div class = "model-title">
+                    Selected Dataset for this Project
+                    <div class="divider-line"></div>
+                    <div class = "model-description">
+                        The data used for this project is a 733,705 element dataset curated by Dyuti_Dasmahaptra on Kaggle and can be found
+                        <a href="https://www.kaggle.com/datasets/dyutidasmahaptra/iot-botnet-traffic-dataset">here</a>. The dataset was 
+                        selected for its quality and large size, containing network traffic flows collected from Internet of Things 
+                        (IoT) devices that were operating in environments affected by botnet attacks. Each row in the dataset represents
+                        a single network flow with packet sequence ID, used protocol, source and destination IP addresses, source and 
+                        destination ports, and a multitude of other characteristics of the flow. Each flow is labeled 0 if it a benign
+                        flow and 1 if it is a malicious attack.
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class = "model-description">
+                        The dataset was used to train a logistical regression model that classifies a flow as benign or malicious,
+                        and the specific categories and methods of the attack if applicable.
+                    </div>
+                    <div class="divider-space"></div>
+                    <div class = "model-description">
+                        The dataset was stored in MongoDB's Atlas Database [...].
+                    </div>
+                </div>
+                <div class="dataset-container">
+                    <div class="table-title">
+                        Sample Excerpt of Dataset
+                        <div class="divider-line"></div>
+                    </div>
+                    <div class="table-inner-container">
+                        <div class="dataset">
+                            <div class="dataset-header-cell tooltip" title="hello">
+                                pkSeqID
+                                <span class="tooltiptext dataset-tooltip">Unique packet sequence ID</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="world">
+                                proto
+                                <span class="tooltiptext">Protocol used</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="test">
+                                saddr
+                                <span class="tooltiptext">Source IP address</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="testing">
+                                sport
+                                <span class="tooltiptext">Source port</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="hello">
+                                daddr
+                                <span class="tooltiptext">Destination IP address</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="world">
+                                dport
+                                <span class="tooltiptext">Destination port</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="test">
+                                seq
+                                <span class="tooltiptext">Sequence number of the packet</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="testing">
+                                stddev
+                                <span class="tooltiptext">Standard deviation of inter-arrival time</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="hello">
+                                n_in_srcip
+                                <span class="tooltiptext">Number of inbound connections per source IP</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="world">
+                                min
+                                <span class="tooltiptext">Minimum packet size or inter-arrival time</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="test">
+                                state_n
+                                <span class="tooltiptext">Encoded representation of connection state</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="testing">
+                                mean
+                                <span class="tooltiptext">Mean packet size or inter-arrival time</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="hello">
+                                n_in_dstip
+                                <span class="tooltiptext">Number of inbound connections per destination IP</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="world">
+                                drate
+                                <span class="tooltiptext">Data rate of the connection</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="test">
+                                srate
+                                <span class="tooltiptext">Session rate or flow creation rate</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="testing">
+                                max
+                                <span class="tooltiptext">Maximum packet size or inter-arrival time</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="hello">
+                                attack
+                                <span class="tooltiptext">Binary label (1 = attack, 0 = benign)</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="world">
+                                category
+                                <span class="tooltiptext">Broad category of the attack (e.g., DDoS, PortScan)</span>
+                            </div>
+                            <div class="dataset-header-cell tooltip" title="test">
+                                sub_cat
+                                <span class="tooltiptext">Specific method or type of attack (e.g., SYN Flood, Mirai-UDP)</span>
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                792371
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                udp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.150
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                48516
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                175094
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                0.226784
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                4.100436
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                4
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.457383
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.404711
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.719438
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                UDP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                2056418
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                tcp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.148
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                22267
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                143024
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                0.451998
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                3.439257
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                3.806172
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.225077
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.401397
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.44293
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DDoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                TCP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                2795650
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                udp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.149
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                28629
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                167033
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1.931553
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                73
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                4
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                2.731204
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.407287
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.138455
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DDoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                UDP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                2118009
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                tcp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.148
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                42142
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                204615
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                0.428798
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                56
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                3.271411
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                3.626428
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.343654
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.2297
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DDoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                TCP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                303688
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                tcp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.149
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1645
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.5
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                40058
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                2.058381
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                3
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1.188407
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.135842
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.753628
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                TCP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                420025
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                tcp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.149
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                39733
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.5
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                156396
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                2.177835
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                36
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                3
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1.539962
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                36
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.127912
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.619887
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                TCP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                3008812
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                udp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.147
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                10800
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                118034
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1.368196
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                1.97518
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                4
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                3.910081
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                1.02512
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.885159
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DDoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                UDP
+                            </div>
+                            <!-- divider between rows -->
+                            <div class="dataset-cell" title="hello">
+                                1064106
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                udp
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                192.168.100.150
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                19625
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                192.168.100.3
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                80
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                184672
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                1.788452
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                4
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                3.576574
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                100
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                0.0
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                0.446612
+                            </div>
+                            <div class="dataset-cell" title="testing">
+                                4.49208
+                            </div>
+                            <div class="dataset-cell" title="hello">
+                                1
+                            </div>
+                            <div class="dataset-cell" title="world">
+                                DoS
+                            </div>
+                            <div class="dataset-cell" title="test">
+                                UDP
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="model-anchor"></div>
+            <div id = "model-content">
+                <div class = "model-title">
+                    Network Analysis Model
+                    <div class="divider-line"></div>
+                    <div class = "model-description">
+                        Logistical Regression Model for Binary Classification of Flows
+                    </div>
+                </div>
+                <div class="table-container">
+                    <div class="table-title">
+                        Model Evaluation Confusion Matrix
+                        <div class="divider-line"></div>
+                    </div>
+                    <div class="table-inner-container">
+                        <div class="table">
+                            <div class="cell tooltip cell1" title="hello">
+                                22
+                                <span class="tooltiptext">Benign flows that were correctly classified as harmless.</span>
+                            </div>
+                            <div class="cell tooltip cell2" title="world">
+                                0
+                                <span class="tooltiptext">Harmless flows that were incorrecly classified as an attack.</span>
+                            </div>
+                            <div class="cell tooltip cell3" title="test">
+                                0
+                                <span class="tooltiptext">Malicious flows that were incorrectly classified as harmless.</span>
+                            </div>
+                            <div class="cell tooltip cell4" title="testing">
+                                146719
+                                <span class="tooltiptext">Malicious flows that were correctly classified as attacks.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-caption">
+                        The model correctly identified whether the network flows in the test dataset were benign or malicious with 
+                        seemingly perfect accuracy.
+
+                        The imbalance of the training and testing datasets were properly handled with Sci-Kit Learn during training.
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>
