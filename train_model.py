@@ -12,7 +12,8 @@ import pickle
 #call list_flows endpoint and iterate thorugh it for the inner func of the wrapper func
 def get_flows(method='get', data=None, headers=None):
     #call the list_flows endpoint. each element in the list is a flow dict
-    url = 'http://localhost:8000/flows/'
+    # url = 'http://localhost:8000/flows/'
+    url = 'https://iotpacketpatrol.onrender.com/flows/'
     response = requests.request(method, url, json=data, headers=headers)
     response.raise_for_status()
     return response.json()
