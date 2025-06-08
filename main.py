@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from routes import router as flows_router
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from infer_router import infer_router
 
 import os
 
@@ -35,3 +36,4 @@ def shutdown_db_client():
     app.mongodb_client.close()
 
 app.include_router(flows_router, tags=["flows"], prefix="/flows")
+app.include_router(infer_router)

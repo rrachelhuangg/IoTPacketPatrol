@@ -15,3 +15,4 @@
 - [ ] Make datasets for live testing if any
 - [ ] Make css responsive to window resizing
 - [ ] Make css responsive to mobile devices
+- [x] Store model and other storable stuff in Atlas MongoDB
