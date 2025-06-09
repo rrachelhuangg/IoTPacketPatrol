@@ -150,7 +150,7 @@
                             </form>
                         </div>
                         <div class="demo-button-container">
-                            <button class="analyze-button">
+                            <button class="analyze-button" id="analyze-button-one">
                                 Analyze
                             </button>
                             <button class="analyze-button add-row-button">
@@ -368,6 +368,20 @@
 
         </div>
     </div>
+    <div id="analysis-result-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-button">&times;</span>
+            <div id="result-text">
+                <div id="permanent-result-text">
+                    Network Analysis Results
+                </div>
+                <div id="changed-result-text">
+                    Analysis result text placeholder
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/scripts/functions.js"></script>
 </body>
 
 </html>
