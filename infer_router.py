@@ -26,9 +26,15 @@ async def test_model(request:Request):
     try: 
         flow = await request.json()
         flow_data = parse_input_flow(flow)
+        flow_data['category'] = "__missing__"
+        flow_data['subcategory'] = "__missing__"
         X_init, _ = parse_flows([flow_data])
         X_df = pd.DataFrame([X_init[0]], columns = ['pkSeqID', 'proto', 'saddr', 'sport', 'daddr', 'dport', 'seq', 'stddev', 'N_IN_Conn_P_SrcIP', 'min', 'state_number', 'mean', 'N_IN_Conn_P_DstIP', 'drate', 'srate', 'max', 'category', 'subcategory'])
 
+        #because OneHotEncoder was trained with these, but these aren't part of the user's input for inference
+        X_df['category'] = "__missing__"
+        X_df['subcategory'] = "__missing__"
+        
         X_df = process_ip_cols(X_df)
         one_hot_x_df = pd.DataFrame(
             loaded_encoder.transform(X_df[['proto', 'category', 'subcategory']]),

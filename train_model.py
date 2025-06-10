@@ -8,12 +8,13 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import ipaddress
 import pickle
+from pymongo import MongoClient
 
 #call list_flows endpoint and iterate thorugh it for the inner func of the wrapper func
 def get_flows(method='get', data=None, headers=None):
     #call the list_flows endpoint. each element in the list is a flow dict
-    # url = 'http://localhost:8000/flows/'
-    url = 'https://iotpacketpatrol.onrender.com/flows/'
+    url = 'http://localhost:8000/flows/'
+    #url = 'https://iotpacketpatrol.onrender.com/flows/'
     response = requests.request(method, url, json=data, headers=headers)
     response.raise_for_status()
     return response.json()
@@ -41,7 +42,8 @@ def parse_flows(flows):
         attributes += [f['category']]
         attributes += [f['subcategory']]
         x += [attributes]
-        y += [f['attack']]
+        #comment the below out when not training
+        # y += [f['attack']]
     return x, y
 
 def one_hot_encode(x):
@@ -87,7 +89,7 @@ def one_hot_encode(x):
     df = pd.DataFrame(data)
     
     categorical_columns = ['proto', 'category', 'subcategory']
-    encoder = OneHotEncoder(sparse_output=False)
+    encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
     one_hot_encoded =  encoder.fit_transform(df[categorical_columns])
     one_hot_df = pd.DataFrame(one_hot_encoded, columns=encoder.get_feature_names_out(categorical_columns))
     df_encoded = pd.concat([df, one_hot_df], axis=1)
@@ -172,7 +174,17 @@ def test_model():
 
 if __name__ == "__main__":
     file_name = "trained_model.pkl"
-    # trained_model, encoder, scaler = train()
-    # with open(file_name, "wb") as file:
-    #     pickle.dump((trained_model, encoder, scaler), file)
+    trained_model, encoder, scaler = train()
+    with open(file_name, "wb") as file:
+        pickle.dump((trained_model, encoder, scaler), file)
+    #below code updates model if it was retrained
+    # binary_data = pickle.dumps((trained_model, encoder, scaler))
+    # client = MongoClient("mongodb+srv://rachelhuang505:24uHXEpaIdqM1jEU@iotdatabase.seqo5qb.mongodb.net/?retryWrites=true&w=majority&appName=IoTDatabase")
+    # db = client["botnet_traffic_dataset"]
+    # collection = db["trained_single_class_model"]
+    # collection.update_one(
+    #     {"filename": "trained_model.pkl"},
+    #     {"$set": {"model_data": binary_data}},
+    #     upsert=True
+    # )
         
