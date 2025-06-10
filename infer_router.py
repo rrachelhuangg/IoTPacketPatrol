@@ -5,9 +5,10 @@ from bson import ObjectId
 import pickle
 from pymongo import MongoClient
 import pandas as pd
-from train_model import get_flows, parse_flows, process_ip_cols
+from train_model import parse_flows, process_ip_cols
 
-from models import NetworkFlow, NetworkFlowUpdate
+from methods import parse_input_flow
+import traceback
 
 infer_router = APIRouter()
 
@@ -20,11 +21,12 @@ document = collection.find_one({"filename": "trained_model.pkl"})
 pickled_model_bytes = document["model_data"]
 loaded_model, loaded_encoder, loaded_scaler = pickle.loads(pickled_model_bytes)
 
-@infer_router.get("/infer", response_description="Test model classification on a flow")
-def test_model():
+@infer_router.post("/infer", response_description="Test model classification on a flow")
+async def test_model(request:Request):
     try: 
-        flows = get_flows()[4522:4523]
-        X_init, _ = parse_flows(flows)
+        flow = await request.json()
+        flow_data = parse_input_flow(flow)
+        X_init, _ = parse_flows([flow_data])
         X_df = pd.DataFrame([X_init[0]], columns = ['pkSeqID', 'proto', 'saddr', 'sport', 'daddr', 'dport', 'seq', 'stddev', 'N_IN_Conn_P_SrcIP', 'min', 'state_number', 'mean', 'N_IN_Conn_P_DstIP', 'drate', 'srate', 'max', 'category', 'subcategory'])
 
         X_df = process_ip_cols(X_df)
@@ -39,4 +41,5 @@ def test_model():
         predictions = loaded_model.predict(X_scaled)
         return predictions.tolist()
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"{str(e)}")
