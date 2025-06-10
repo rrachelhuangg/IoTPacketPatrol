@@ -52,7 +52,6 @@ def parse_input_flow(flow_dict: dict) -> dict:
       "drate": float(flow_dict["drate"]),
       "srate": float(flow_dict["srate"]),
       "max": float(flow_dict["max"]),
-      "attack": int(flow_dict["attack"]),
       "category": str(flow_dict["category"]),
       "subcategory": str(flow_dict["subcategory"])
    }

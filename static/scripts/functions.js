@@ -5,13 +5,13 @@ const closeButton = document.getElementById("close-button");
 
 if(analyzeButtonOne){
     analyzeButtonOne.addEventListener("click", async function(){
-        //let url = 'http://localhost:8000/infer';
-        let url = 'https://iotpacketpatrol.onrender.com/infer';
+        let url = 'http://localhost:8000/infer';
+        //let url = 'https://iotpacketpatrol.onrender.com/infer';
 
         const fieldIds = [
             "pkSeqID", "proto", "saddr", "sport", "daddr", "dport", "seq",
             "stddev", "N_IN_Conn_P_SrcIP", "min", "state_number", "mean", "N_IN_Conn_P_DstIP", 
-            "drate", "srate", "max", "attack", "category", "subcategory"
+            "drate", "srate", "max", "category", "subcategory"
         ];
 
         const inputData = {};

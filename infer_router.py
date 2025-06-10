@@ -30,7 +30,6 @@ async def test_model(request:Request):
         X_df = pd.DataFrame([X_init[0]], columns = ['pkSeqID', 'proto', 'saddr', 'sport', 'daddr', 'dport', 'seq', 'stddev', 'N_IN_Conn_P_SrcIP', 'min', 'state_number', 'mean', 'N_IN_Conn_P_DstIP', 'drate', 'srate', 'max', 'category', 'subcategory'])
 
         X_df = process_ip_cols(X_df)
-        print("flow id: ", X_df['pkSeqID'])
         one_hot_x_df = pd.DataFrame(
             loaded_encoder.transform(X_df[['proto', 'category', 'subcategory']]),
             columns=loaded_encoder.get_feature_names_out(['proto', 'category', 'subcategory'])
