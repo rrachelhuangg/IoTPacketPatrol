@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.get("/", response_description="List all network flow elements", response_model=List[NetworkFlow])
 def list_flows(request: Request):
-    network_flows = list(request.app.database["botnet_traffic_data"].find(limit=5000))
+    network_flows = list(request.app.database["botnet_traffic_data"].find(limit=733705))
     return network_flows
 
 @router.post("/", response_description="Add a new network flow", status_code=status.HTTP_201_CREATED, response_model=NetworkFlow)

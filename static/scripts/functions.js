@@ -2,6 +2,22 @@ const analyzeButtonOne = document.getElementById("analyze-button-one");
 const modal = document.getElementById("analysis-result-modal");
 const modalText = document.getElementById("changed-result-text");
 const closeButton = document.getElementById("close-button");
+const sampleButton = document.getElementById("sample-datasets");
+const sampleModal = document.getElementById("sample-datasets-modal");
+const sampleListText = document.getElementById("sample-datasets-list");
+const closeSampleButton = document.getElementById("close-sample-button");
+
+if(sampleButton){
+    sampleButton.addEventListener("click", function(){
+        sampleModal.style.display = "block";
+    });
+}
+
+if(closeSampleButton){
+    closeSampleButton.addEventListener("click", function(){
+        sampleModal.style.display = "none";
+    });
+}
 
 if(analyzeButtonOne){
     analyzeButtonOne.addEventListener("click", async function(){
@@ -56,5 +72,8 @@ if(closeButton){
 window.addEventListener("click", function(event){
     if(event.target===modal){
         modal.style.display="none";
+    }
+    else if(event.target==sampleModal){
+        sampleModal.style.display="none";
     }
 });

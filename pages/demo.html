@@ -146,7 +146,13 @@
                     <div class="demo-one-container">
                     <div class="demo-one-title">
                         <div class="divider-space"></div>
-                        Upload your data here:
+                        Pick a sample dataset: 
+                        <button class="sample-download-button" id="sample-datasets">Sample Datasets</button>
+                        <div class="divider-line"></div>
+                    </div>
+                    <div class="demo-one-title">
+                        <div class="divider-space"></div>
+                        Upload sample dataset for analysis:
                         <form>
                             <label for="myFile" class="analyze-button upload-button">Upload Dataset</label>
                             <input type="file" id="myFile" name="filename">
@@ -172,6 +178,25 @@
                     Analysis result text placeholder
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="sample-datasets-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-sample-button">&times;</span>
+                <div class="sample-datasets-list">
+                    Sample Datasets
+                    <div class="list-datasets">
+                        <div class="bullet-point-dataset">
+                            <a href="/static/assets/datasets/generated_dataset_1.csv" download="Dataset_1.csv">Download Dataset 1</a>
+                        </div>
+                        <div class="bullet-point-dataset">
+                            <a href="/static/assets/datasets/generated_dataset_2.csv" download="Dataset_2.csv">Download Dataset 2</a>
+                        </div>
+                        <div class="bullet-point-dataset">
+                            <a href="/static/assets/datasets/generated_dataset_3.csv" download="Dataset_3.csv">Download Dataset 3</a>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
     <script src="/static/scripts/functions.js"></script>
