@@ -9,6 +9,9 @@ import pandas as pd
 import ipaddress
 import pickle
 from pymongo import MongoClient
+from sklearn.multioutput import MultiOutputClassifier
+from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 #call list_flows endpoint and iterate thorugh it for the inner func of the wrapper func
 def get_flows(method='get', data=None, headers=None):
@@ -20,7 +23,10 @@ def get_flows(method='get', data=None, headers=None):
     return response.json()
 
 def parse_flows(flows):
-    x, y = [], []
+    x = []
+    y_attack = []
+    y_category = []
+    y_subcategory = []
     for f in flows:
         attributes = []
         attributes += [f['pkSeqID']]
@@ -43,8 +49,16 @@ def parse_flows(flows):
         attributes += [f['subcategory']]
         x += [attributes]
         #comment the below out when not training
-        #y += [f['attack']]
-    return x, y
+        y_attack += [f['attack']]
+        if f['attack'] == 1:
+            y_category.append(f['category'])
+        else:
+            y_category.append("Benign")
+        if f['attack'] == 1:
+            y_subcategory.append(f['subcategory'])
+        else:
+            y_subcategory.append("Benign")
+    return x, y_attack, y_category, y_subcategory
 
 def one_hot_encode(x):
     #one hot encode categorical columns of independent variables and return as a list
@@ -134,32 +148,41 @@ def process_ip_cols(df):
     return df
 
 def train():
-    X_init, y = parse_flows(get_flows())
+    X_init, y_attack, y_category, y_subcategory = parse_flows(get_flows())
     X, encoder = one_hot_encode(X_init)
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=1)
-    model = LogisticRegression(class_weight='balanced', max_iter = 1000, solver='lbfgs', penalty = 'l2')
+    le_category = LabelEncoder()
+    le_subcategory = LabelEncoder()
+    y_attack_encoded = y_attack
+    y_category_encoded = le_category.fit_transform(y_category)
+    y_subcategory_encoded = le_subcategory.fit_transform(y_subcategory)
+    y_combined = np.column_stack((y_attack_encoded, y_category_encoded, y_subcategory_encoded))
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_combined, test_size=0.2, random_state=1)
+    base_model = LogisticRegression(class_weight='balanced', max_iter = 1000, solver='lbfgs', penalty = 'l2')
+    model = MultiOutputClassifier(base_model)
     model.fit(X_train, y_train)
     print("TRAIN ACCURACY: ", model.score(X_train, y_train))
     print("TEST ACCURACY: ", model.score(X_test, y_test))
     y_pred = model.predict(X_test)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    class_report = classification_report(y_test, y_pred)
-    print(f"Confusion Matrix: {conf_matrix}")
-    print(f"Classification report: {class_report}")
-    return model, encoder, scaler
+    for i, name in enumerate(["Attack", "Category", "Subcategory"]):
+        print(confusion_matrix(y_test[:, i], y_pred[:, i]))
+    print("Attack classification results: ")
+    print(classification_report(y_test[:, 0], y_pred[:, 0]))
+    print(classification_report(y_test[:, 1], y_pred[:, 1]))
+    print(classification_report(y_test[:, 2], y_pred[:, 2]))
+    return model, encoder, scaler, le_category, le_subcategory
 
 def test_model():
     #should move this to an endpoint so that model can be tested from ui
-    file_name = "trained_model.pkl"
+    file_name = "trained_multiclass_model.pkl"
     loaded_model = None
 
     flows = get_flows()[4522:4523]
-    X_init, _ = parse_flows(flows)
+    X_init, _, _, _= parse_flows(flows)
     X_df = pd.DataFrame([X_init[0]], columns = ['pkSeqID', 'proto', 'saddr', 'sport', 'daddr', 'dport', 'seq', 'stddev', 'N_IN_Conn_P_SrcIP', 'min', 'state_number', 'mean', 'N_IN_Conn_P_DstIP', 'drate', 'srate', 'max', 'category', 'subcategory'])
     with open(file_name, "rb") as file:
-        loaded_model, loaded_encoder, loaded_scaler = pickle.load(file)
+        loaded_model, loaded_encoder, loaded_scaler, le_category, le_subcategory = pickle.load(file)
 
     X_df = process_ip_cols(X_df)
     one_hot_x_df = pd.DataFrame(
@@ -169,22 +192,27 @@ def test_model():
     X_df = pd.concat([X_df.drop(['proto', 'category', 'subcategory'], axis=1), one_hot_x_df], axis=1)
     X_scaled = loaded_scaler.transform(X_df)
 
-    predictions = loaded_model.predict(X_scaled)
-    return predictions
+    predictions = loaded_model.predict(X_scaled)[0]
+    attack = predictions[0]
+    category = le_category.inverse_transform([predictions[1]])[0]
+    subcategory = le_subcategory.inverse_transform([predictions[2]])[0]
+    print("ID: ", X_df['pkSeqID'])
+    return {"attack": attack, "category": category, "subcategory": subcategory}
 
 if __name__ == "__main__":
-    file_name = "trained_model.pkl"
-    trained_model, encoder, scaler = train()
+    file_name = "trained_multiclass_model.pkl"
+    trained_model, encoder, scaler, le_category, le_subcategory = train()
     with open(file_name, "wb") as file:
-        pickle.dump((trained_model, encoder, scaler), file)
+        pickle.dump((trained_model, encoder, scaler, le_category, le_subcategory), file)
+
     #below code updates model if it was retrained - run together with the above main code
-    # binary_data = pickle.dumps((trained_model, encoder, scaler))
-    # client = MongoClient("mongodb+srv://rachelhuang505:24uHXEpaIdqM1jEU@iotdatabase.seqo5qb.mongodb.net/?retryWrites=true&w=majority&appName=IoTDatabase")
-    # db = client["botnet_traffic_dataset"]
-    # collection = db["trained_single_class_model"]
-    # collection.update_one(
-    #     {"filename": "trained_model.pkl"},
-    #     {"$set": {"model_data": binary_data}},
-    #     upsert=True
-    # )
+    binary_data = pickle.dumps((trained_model, encoder, scaler, le_category, le_subcategory))
+    client = MongoClient("mongodb+srv://rachelhuang505:24uHXEpaIdqM1jEU@iotdatabase.seqo5qb.mongodb.net/?retryWrites=true&w=majority&appName=IoTDatabase")
+    db = client["botnet_traffic_dataset"]
+    collection = db["trained_multi_class_model"]
+    collection.insert_one({
+        "filename": "trained_multiclass_model.pkl",
+        "model_data": binary_data
+    })
+    # print(test_model())
         

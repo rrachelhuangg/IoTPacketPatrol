@@ -18,10 +18,9 @@
                 </div>
                 <div class="logo">PacketPatrol</div>
             </a>
-            <a href = "/#dataset-anchor" class="header-mini">Dataset</a>
-            <a href = "/#model-anchor" class="header-mini">Model</a>
+            <a href = "#dataset-anchor" class="header-mini">Project Architecture</a>
             <a href = "/demo" class="header-mini">Live Demo</a>
-            <div class="header-mini">Team</div>
+            <a href = "/about" class="header-mini">About</a>
             <div class="devpost-button">
                 Devpost
             </div>
@@ -30,15 +29,8 @@
             <div id="demo-anchor"></div>
             <div id = "demo-content">
                 <div class = "model-title">
-                    Using the PacketPatrol Model for Analyzing Networks
+                    Live Demo
                     <div class="divider-line"></div>
-                    <div class = "model-description">
-                        There are two ways to use the PacketPatrol model: 
-                    </div>
-                    <ul>
-                        <li>Network flow data can be entered below in the interface</li>
-                        <li>A data file containing network flows of the same format as the dataset excerpt can be uploaded</li>
-                    </ul>
                 </div>
                 <div class="dataset-container">
                     <div class="demo-one-container">
@@ -138,30 +130,14 @@
                             <button class="analyze-button" id="analyze-button-one">
                                 Analyze
                             </button>
-                            <button class="analyze-button add-row-button">
-                                Add Input Row
-                            </button>
                         </div>
                     </div>
                     <div class="demo-one-container">
-                    <div class="demo-one-title">
-                        <div class="divider-space"></div>
-                        Pick a sample dataset: 
-                        <button class="sample-download-button" id="sample-datasets">Sample Datasets</button>
-                        <div class="divider-line"></div>
-                    </div>
-                    <div class="demo-one-title">
-                        <div class="divider-space"></div>
-                        Upload sample dataset for analysis:
-                        <form>
-                            <label for="myFile" class="analyze-button upload-button">Upload Dataset</label>
-                            <input type="file" id="myFile" name="filename">
-                        </form>
-                        <div class="divider-line"></div>
-                    </div>
-                    <div class="dataset">
-                        
-                    </div>
+                    <button class="load-dataset-button" id="load-dataset-one">Load Dataset 1</button>
+                    <button class="load-dataset-button" id="load-dataset-two">Load Dataset 2</button>
+                    <button class="load-dataset-button" id="load-dataset-three">Load Dataset 3</button>
+                    <button class="load-dataset-button" id="load-dataset-four">Load Dataset 4</button>
+                    <button class="load-dataset-button" id="load-dataset-five">Load Dataset 5</button>
                 </div>
             </div>
 
@@ -174,29 +150,16 @@
                 <div id="permanent-result-text">
                     Network Analysis Results
                 </div>
-                <div id="changed-result-text">
-                    Analysis result text placeholder
+                <div id="classification-result-text">
+                    Analysis result
+                </div>
+                <div id="category-result-text">
+                    Analysis result
+                </div>
+                <div id="subcategory-result-text">
+                    Analysis result
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="sample-datasets-modal" class="modal">
-        <div class="modal-content">
-            <span id="close-sample-button">&times;</span>
-                <div class="sample-datasets-list">
-                    Sample Datasets
-                    <div class="list-datasets">
-                        <div class="bullet-point-dataset">
-                            <a href="/static/assets/datasets/generated_dataset_1.csv" download="Dataset_1.csv">Download Dataset 1</a>
-                        </div>
-                        <div class="bullet-point-dataset">
-                            <a href="/static/assets/datasets/generated_dataset_2.csv" download="Dataset_2.csv">Download Dataset 2</a>
-                        </div>
-                        <div class="bullet-point-dataset">
-                            <a href="/static/assets/datasets/generated_dataset_3.csv" download="Dataset_3.csv">Download Dataset 3</a>
-                        </div>
-                    </div>
-                </div>
         </div>
     </div>
     <script src="/static/scripts/functions.js"></script>

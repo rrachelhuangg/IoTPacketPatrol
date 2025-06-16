@@ -26,6 +26,12 @@ async def model_page():
         html_content = file.read()
     return HTMLResponse(content=html_content, status_code=200)
 
+@app.get('/about')
+async def about_page():
+    with open("pages/about.html", "r") as file:
+        html_content = file.read()
+    return HTMLResponse(content=html_content, status_code=200)
+
 @app.on_event("startup")
 def startup_db_client():
     app.mongodb_client = MongoClient(os.getenv('ATLAS_URI'))
